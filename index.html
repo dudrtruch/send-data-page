@@ -7,12 +7,12 @@
         function sendData() {
             const urlParams = new URLSearchParams(window.location.search);
             const data = {
-                user: urlParams.get('user'),
-                email: urlParams.get('email'),
-                title: urlParams.get('title'),
-                entscheidung: urlParams.get('entscheidung'),
-                fuehrungskraft: urlParams.get('fuehrungskraft'),
-                faellig_seit: urlParams.get('faellig_seit')
+                user: urlParams.get('User'),
+                email: urlParams.get('User-Mail'),
+                title: urlParams.get('Curriculum title'),
+                entscheidung: urlParams.get('Entscheidung'),
+                fuehrungskraft: urlParams.get('User-Manager'),
+                faellig_seit: urlParams.get('Last modified')
             };
 
             console.log('Sending data:', data); // Debugging
@@ -29,7 +29,10 @@
                 if (response.ok) {
                     alert('Your response has been recorded.');
                 } else {
-                    alert('There was an error sending your response.');
+                    response.text().then(text => {
+                        console.error('Response text:', text); // Debugging
+                        alert('There was an error sending your response: ' + text);
+                    });
                 }
             })
             .catch((error) => {
