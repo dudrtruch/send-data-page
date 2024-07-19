@@ -22,10 +22,12 @@
                 },
                 body: JSON.stringify(data)
             })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Success:', data);
-                alert('Your response has been recorded.');
+            .then(response => {
+                if(response.ok) {
+                    alert('Your response has been recorded.');
+                } else {
+                    alert('There was an error sending your response.');
+                }
             })
             .catch((error) => {
                 console.error('Error:', error);
@@ -37,6 +39,8 @@
     </script>
 </head>
 <body>
-    <h1>Sending your response...</h1>
+    <h1>Your request has been submitted. You can now close this page. 
+
+Thank you very much for your answer.</h1>
 </body>
 </html>
