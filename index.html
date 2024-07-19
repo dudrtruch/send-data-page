@@ -15,7 +15,9 @@
                 faellig_seit: urlParams.get('Last modified')
             };
 
-            console.log('Sending data:', data); // Debugging
+            // Debugging
+            console.log('URL Parameters:', urlParams.toString());
+            console.log('Parsed Data:', data);
 
             fetch('https://prod-14.westeurope.logic.azure.com:443/workflows/e23af36a04fa43cbbde17025df926b53/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=ATAz2h_1Xpg7crh9u3fzJFIOZLxaJb6uLL24nyeZDcw', {
                 method: 'POST',
