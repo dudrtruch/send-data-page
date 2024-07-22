@@ -3,6 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <title>Send Data</title>
+    <style>
+        .thank-you-container {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+        .thank-you-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .thank-you-content h1 {
+            color: #0056b3;
+            font-size: 24px;
+        }
+        .thank-you-content p {
+            color: #333;
+            font-size: 18px;
+            margin: 10px 0;
+        }
+        .thank-you-content .close-message {
+            color: #666;
+            font-size: 14px;
+            margin-top: 20px;
+        }
+    </style>
     <script>
         function sendData() {
             const urlParams = new URLSearchParams(window.location.search);
@@ -27,7 +60,7 @@
             .then(response => {
                 console.log('Response:', response); // Debugging
                 if (response.ok) {
-                    alert('Your response has been recorded.');
+                    displayThankYouMessage();
                 } else {
                     alert('There was an error sending your response.');
                 }
@@ -38,10 +71,38 @@
             });
         }
 
+        function displayThankYouMessage() {
+            var userLang = navigator.language || navigator.userLanguage;
+            var message;
+            var closeMessage;
+
+            if (userLang.startsWith("de")) {
+                message = "Vielen Dank, dass Sie auf die E-Mail reagiert haben und uns mitgeteilt haben, wie Sie mit dem offenen Trainingsmaterial des Ottobock After-Sales-Service umgehen möchten.";
+                closeMessage = "Sie können diese Seite nun schließen.";
+            } else {
+                message = "Thank you for responding to the email and informing us how you would like to handle the outstanding training material for the Ottobock After-Sales Service.";
+                closeMessage = "You can now close this page.";
+            }
+
+            document.getElementById("thankYouMessage").innerText = message;
+            document.getElementById("thankYouCloseMessage").innerText = closeMessage;
+            document.getElementById("sendingMessage").style.display = "none";
+            document.getElementById("thankYouContainer").style.display = "flex";
+        }
+
         document.addEventListener('DOMContentLoaded', sendData);
     </script>
 </head>
 <body>
-    <h1>Sending your response...</h1>
+    <div id="sendingMessage">
+        <h1>Sending your response...</h1>
+    </div>
+    <div id="thankYouContainer" class="thank-you-container" style="display: none;">
+        <div class="thank-you-content">
+            <h1>Thank You / Vielen Dank</h1>
+            <p id="thankYouMessage"></p>
+            <p id="thankYouCloseMessage" class="close-message"></p>
+        </div>
+    </div>
 </body>
 </html>
