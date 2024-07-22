@@ -36,6 +36,14 @@
             font-size: 14px;
             margin-top: 20px;
         }
+        .logo {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+        .logo img {
+            width: 150px;
+        }
     </style>
     <script>
         function sendData() {
@@ -78,7 +86,7 @@
             var closeMessage;
 
             if (userLang.startsWith("de")) {
-                message = "Vielen Dank, dass Sie auf die E-Mail reagiert haben und uns mitgeteilt haben, wie Sie mit dem offenen Trainingsmaterial des Ottobock After-Sales-Service umgehen möchten.";
+                message = "Vielen Dank, dass Sie auf unsere E-Mail reagiert und uns darüber informiert haben, wie Sie mit dem ausstehenden Trainingsmaterial des Ottobock After-Sales-Service verfahren möchten.";
                 closeMessage = "Sie können diese Seite nun schließen.";
             } else {
                 message = "Thank you for responding to the email and informing us how you would like to handle the outstanding training material for the Ottobock After-Sales Service.";
@@ -95,6 +103,9 @@
     </script>
 </head>
 <body>
+    <div class="logo">
+        <a href="https://www.ottobock.com"><img src="https://www.ottobock.com/_Resources/Persistent/6e8096c6d3c3a0f98c2d708fd38a830e362a2d24/ottobock-logo.svg" alt="Ottobock Logo"></a>
+    </div>
     <div id="sendingMessage">
         <h1>Sending your response...</h1>
     </div>
